@@ -1,0 +1,1011 @@
+/* Define custom properties in :root */
+:root {
+    --primary-color: #202127;
+    --secondary-color: #C0C5D2;
+    --overlay-1: rgba(192, 197, 210, 0.4);
+    --primary-font: "Sacramento", cursive;
+    --secondary-font: "Raleway", sans-serif;
+    --quran-font: "Katibeh", serif;
+    --cover-image-desktop: url('gallery14.jpeg');
+  }
+
+body {
+    font-family: var(--secondary-font);
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+}
+
+/* .............COVER............... */
+.cover {
+    position: relative; /* Atur elemen sebagai relatif untuk menempatkan overlay */
+    background-image: var(--cover-image-desktop);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 100vh;
+    text-align: right;
+    z-index: 1; /* Pastikan konten berada di atas overlay */
+    overflow-y: hidden;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Overlay menggunakan pseudo-element */
+.cover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay dengan transparansi 50% */
+    z-index: -1; /* Tempatkan overlay di bawah konten */
+}
+
+.cover .guest-name {
+    font-family: var(--secondary-font);
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-size: 1em;
+    color: white;
+    z-index: 2; /* Pastikan teks di atas overlay */
+}
+
+.cover button {
+    margin-bottom: 100px;
+    padding: 10px 20px;
+    font-family: var(--secondary-font);
+    font-size: 1em;
+    background-color: #202127;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 2; /* Pastikan tombol di atas overlay */
+}
+
+.cover button:hover {
+    background-color: #C0C5D2;
+    color: black;
+}
+
+.invitation-content {
+    display: none;
+}
+
+.bride-groom {
+    font-family: var(--primary-font);
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+/* ..............NAVIGASI.................. */
+
+/* NAVIGASI */
+nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--overlay-1);
+    border-radius: 50px;
+    z-index: 999;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 20px; /* Jarak antar ikon */
+    justify-content: center;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 20px; /* Ukuran ikon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #f4f4f4; /* Warna teks saat hover */
+}
+
+/* Tambahan untuk ikon play/pause */
+#playPauseButton {
+    cursor: pointer;
+}
+
+
+/* ..................SEPERATOR............. */
+.separator {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 5px 0;
+}
+
+.separator::before, 
+.separator::after {
+    content: '';
+    height: 1px; /* Membuat garis horizontal */
+    flex-grow: 1;
+    width: 160px;
+    background-color: white;
+}
+
+/* ...............  ANIMATION............... */
+.fade-in {
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+}
+
+.fade-slide {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+}
+
+.fade-slide.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animasi swipe dari kiri */
+.swipe-left {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+}
+
+.swipe-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Animasi swipe dari kanan */
+.swipe-right {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+}
+
+.swipe-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+  
+/* .....................AUDIO CONTROL.................... */
+.audio-controls {
+    position: fixed;
+    top: 50px;
+    left: 20px;
+    z-index: 999; /* Ensure it's above other content */
+    text-align: center;
+    display: none; /* Initially hide the button */
+}
+
+.play-btn {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+/* ..................SECTION............... */
+.section {
+    font-family: var(--secondary-font);
+    font-weight: 400;
+    font-style: normal;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 50px;
+    overflow-x: hidden;
+}
+
+/* Menambahkan overlay untuk memastikan teks terbaca di atas gambar */
+.section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Overlay gelap */
+    z-index: 1;
+}
+
+.section > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* ................SECTION 1.................. */
+#section1 {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    text-align: right;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.wedding-info {
+    line-height: 1.2;
+}
+
+.wedding-of {
+    font-size: 1.5em;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.bride-groom {
+    font-size: 3em;
+    margin: 0 0 50px 0;
+    padding: 0;
+    color: white;
+}
+
+.wedding-date {
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+}
+
+.quran-verse {
+    max-width: 350px;
+    font-size: 1em;
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+}
+
+.ayat {
+    font-size: 1.2em;
+    font-family: var(--quran-font);
+    font-weight: 200;
+    font-style: normal;
+}
+
+.nama-surah {
+    font-size: 0.8em;
+}
+
+/* ..................SECTION 2..................... */
+#section2 {
+    position: relative;
+    background-image: url('gallery21.jpeg');
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-align: right;
+    padding: 20px;
+}
+
+#section2 > * {
+    z-index: 2;
+}
+
+#section2 h2 {
+    color: #C0C5D2;
+    margin: 5px 0;
+    padding: 0;
+    font-size: 2.2em;
+    font-family: var(--primary-font);
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+#section2 h3 {
+    font-size: 1.3em;
+    margin: 0;
+    padding: 0;
+}
+
+#section2 p {
+    line-height: 0.5;
+    margin: 10px 0;
+}
+
+.profile {
+    margin-bottom: 50px;
+}
+
+.anakke {
+    font-weight: 600;
+    font-size: 0.8em;
+}
+
+.parent {
+    font-size: 0.6em;
+}
+
+#lottie-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: auto;
+    z-index: 1;
+}
+
+/* ..............SECTION 3............. */
+#section3 {
+    background-image: url('gallery20.jpeg');
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    text-align: left;
+    padding: 20px;
+}
+
+#section3 h2 {
+    color: #C0C5D2;
+    margin: 5px 0;
+    padding: 0;
+    font-size: 2.2em;
+    font-family: var(--primary-font);
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+#section3 h3 {
+    font-size: 1.3em;
+    margin: 0;
+    padding: 0;
+}
+
+#section3 p {
+    line-height: 0.5;
+    margin: 10px 0;
+}
+
+.instagram-button {
+    color: white;
+    margin-left: 10px;
+}
+/* ...............SECTION 4............... */
+#section4 {
+    background-image: url('gallery14.jpeg');
+}
+
+#countdown {
+    font-size: 0.6em;
+}
+
+#countdown h3 {
+    font-family: var(--primary-font);
+    font-weight: 300;
+    font-size: 4em;
+    margin-bottom: 50px;
+}
+
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Jarak antar item countdown */
+    margin: 0 0 50px 0;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #202127;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    padding: 5px;
+}
+
+.countdown-item div {
+    padding: 2px;
+}
+
+.countdown-item #days,
+.countdown-item #hours,
+.countdown-item #minutes,
+.countdown-item #seconds {
+    font-size: 2em; /* Ukuran angka */
+}
+
+.countdown-item .label {
+    font-size: 0.8em; /* Ukuran keterangan */
+    color: white;
+}
+
+/* ..................SECTION 5 WEDDING DETAILS................... */ 
+#section5 {
+    background-image: url('gallery18.jpeg');
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+    padding: 20px;
+    box-sizing: border-box;
+}
+        
+.konten5 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.konten5 h3 {
+    color: #C0C5D2;
+    font-size: 1.6em;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.konten5 h4 {
+    text-decoration: underline;
+    font-size: 1.3em;
+}
+
+.konten5 p {
+    font-size: 0.8em;
+}
+        
+.judul {
+    font-family: var(--primary-font);
+    font-weight: 700;
+    font-size: 1.8em;
+    text-align: center;
+    margin-bottom: 15%;
+}
+
+.judul h2 {
+    margin: 0;
+    padding: 0;
+}        
+.Akad, .Resepsi {
+    width: 100%;
+    padding: 0 20px; /* Memberi ruang di kiri dan kanan */
+}
+        
+.Akad {
+    margin-bottom: 15%; /* Jarak antara akad dan resepsi */
+    justify-content: flex-end; /* Posisi di kanan */
+    text-align: right;
+}
+        
+.Resepsi {
+    justify-content: flex-start; /* Posisi di kiri */
+    text-align: left;
+}
+        
+h2, h3, h4, p {
+    margin: 5px 0; /* Mengatur margin untuk elemen teks */
+}
+
+.location-button {
+    font-size: 0.8em;
+    margin-top: 50px;
+    padding: 5px 16px;
+    background-color: #202127;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.lokasi {
+    margin-bottom: 20px;
+}
+        
+
+/* ..............SECTION 6 GALLERY.................. */
+#section6 {
+    background-image: url('gallery19.jpeg');
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: auto;
+}
+.section6-title {
+    margin-bottom: 60px;
+    font-family: var(--primary-font);
+    font-weight: 700;
+    font-size: 1.8em;
+}
+
+/* Masonry Gallery */
+.masonry-gallery {
+    column-count: 2;
+    column-gap: 15px;
+  }
+  
+  .gallery-item {
+    break-inside: avoid;
+    margin-bottom: 15px;
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery-item img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Lightbox Modal */
+  .lightbox {
+    display: none; /* Hide by default */
+    position: fixed;
+    z-index: 9999;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .lightbox-content {
+    max-width: 90%;
+    max-height: 80%;
+    margin: auto;
+    display: block;
+  }
+  
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .close:hover {
+    color: #bbb;
+  }
+  
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    transition: 0.3s;
+    user-select: none;
+  }
+  
+  .prev {
+    left: 0;
+  }
+  
+  .next {
+    right: 0;
+  }
+  
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+
+
+/* ..............SECTION 7 RSVP & MESSAGES............ */
+#section7 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('gallery17.jpeg');
+    padding-top: 40px;
+    padding-bottom: 40px;
+    text-align: center;
+    color: white;
+    height: auto;
+    overflow-y: hidden;
+}
+
+.title-7 {
+    margin: 0 0 50px 0;
+}
+
+.title-7 h2 {
+    margin: 0;
+    font-family: var(--primary-font);
+    font-weight: 700;
+    font-size: 1.8em;
+}
+
+#rsvpForm {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+#rsvpForm input, #rsvpForm textarea, #rsvpForm select {
+    max-width: 600px;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-family: var(--secondary-font);
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.6em; /* Atau gunakan 16px jika lebih konsisten */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+select {
+    font-family: var(--secondary-font);
+    font-weight: 400;
+    font-style: normal;
+}
+
+button {
+    font-family: var(--secondary-font);
+    font-weight: 400;
+    font-style: normal;
+    padding: 10px 20px;
+    font-size: 0.6em;
+    color: white;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #C0C5D2;
+    color: var(--primary-color);
+}
+
+/* TAMPILAN PESAN*/
+.container {
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin: 50px 0 0 0;
+    gap: 40px;
+    box-sizing: border-box;
+}
+
+.message-box, .attendance-box {
+    max-width: 600px;
+    width: 100%;
+    max-height: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.2);
+    overflow-y: auto; /* Tambahkan scroll vertikal */
+}
+
+.message-box h3, .attendance-box h3 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    text-align: center;
+    color: white;
+    font-family: var(--primary-font);
+}
+
+.message-item {
+    max-width: 300px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: rgba(32, 33, 39, 0.8);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.attendance-status {
+    width: 80px;
+    text-align: left;
+    font-size: 0.9em;
+    color: white;
+    font-style: italic;
+    border-top: 1px solid white;
+    color: white;
+}
+
+.message-item h4 {
+    margin: 0 0 5px 0;
+    font-size: 1em;
+    text-decoration: wavy;
+    text-align: left;
+}
+
+.message-item p {
+    margin: 0;
+    font-size: 0.7em;
+    text-align: left;
+}
+
+.attendance-grid {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.attendance-item {
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: rgba(32, 33, 39, 0.5);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.attendance-number {
+    font-size: 1.3em;
+    font-weight: bold;
+    display: block;
+}
+
+.attendance-label {
+    font-size: 0.5em;
+    margin-top: 5px;
+}
+
+/* ................SECTION 8 ....................... */
+
+#section8 {
+    background-image: url('gallery16.jpeg');
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Section 8 Styling */
+.wedding-gift {
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wedding-gift h2 {
+    font-family: var(--primary-font);
+    font-size: 2.5em;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+
+.wedding-gift p {
+    margin: 10px 0;
+}
+
+.bank-account {
+    background-color: var(--overlay-1);
+    border-radius: 50px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    gap: 10px;
+    width: 220px;
+    height: 220px;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.bank-account img {
+    height: 70px;
+    margin: 0 0 10px 0;
+}
+
+#account-number {
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0;
+    color: var(--primary-color);
+}
+
+#copy-button {
+    background-color: #202127;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 0.8em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#copy-button:hover {
+    background-color: #C0C5D2;
+    color: var(--primary-color);
+}
+
+
+/* Section 9 Styling */
+#section9 {
+    background-image: url('gallery19.jpeg');
+    text-align: center;
+    padding: 40px 20px;
+    color: #fff;
+    background-color: #333; /* Warna latar belakang yang berbeda untuk kontras */
+    box-sizing: border-box;
+}
+
+.thank-you h2 {
+    font-family: var(--primary-font);
+    font-weight: 700;
+    font-size: 3.2em;
+    margin-bottom: 20px;
+}
+
+.thank-you .bride-groom {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.thank-you-message {
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.decoration-img {
+    margin-top: 10px; /* Jarak antara teks dan gambar */
+    width: 220px; /* Agar responsif */
+    height: auto;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    padding-bottom: 50px;
+    padding-top: 15px;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .logo img {
+    height: 40px; /* Atur tinggi logo */
+  }
+  
+  .social-media {
+    display: flex;
+  }
+  
+  .social-icon {
+    color: white; /* Warna ikon */
+    font-size: 24px; /* Ukuran ikon */
+    margin-left: 15px; /* Jarak antar ikon */
+    text-decoration: none; /* Menghilangkan garis bawah */
+  }
+  
+  .social-icon:hover {
+    color: black; /* Warna saat hover */
+  }
+
+
+/* Responsif untuk teks agar tetap terbaca di perangkat kecil */
+@media (max-width: 768px) {
+    .cover {
+        background-image: url('gallery1.jpeg')
+    }
+
+    .section {
+        padding: 10px;
+    }
+
+    .cover h1 {
+        font-size: 2em;
+    }
+
+    .cover button {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+    #section2 {
+        background-image: url('gallery9.jpeg');
+    }
+
+    #section3 {
+        background-image: url('gallery8.jpeg');
+    }
+    #section4 {
+        background-image: url('gallery4.jpeg');
+    }
+
+    #section5 {
+        height: 100vh;
+    }
+
+    .section6 {
+        height: 100vh;
+    }
+
+    #section7 {
+        background-image: url('gallery7.jpeg');
+    }
+
+    #rsvpForm {
+        min-width: 100%;
+    }
+
+    #gallery8 {
+        background-image: url('gallery8.jpeg');
+    }
+}
