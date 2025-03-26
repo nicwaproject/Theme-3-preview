@@ -188,23 +188,32 @@ updateCountdown(); // Initialize countdown
 
   // Fungsi untuk menampilkan pesan RSVP
   function fetchMessages() {
-      fetch('https://zhapran-fira-tema-2.glitch.me/rsvp')
-          .then(response => response.json())
-          .then(data => {
-              const messagesContainer = document.getElementById('messages');
-              messagesContainer.innerHTML = '';
-              data.forEach(message => {
-                  const messageElement = document.createElement('div');
-                  messageElement.classList.add('message-item');
-                  messageElement.innerHTML = `
-                      <h4>${message.name}</h4>
-                      <p>${message.message}</p>
-                      <p class="attendance-status">${message.attendance}</p>
-                  `;
-                  messagesContainer.appendChild(messageElement);
-              });
-          });
-  }
+    fetch('https://zhapran-fira-tema-2.glitch.me/rsvp')
+        .then(response => response.json())
+        .then(data => {
+            const messagesContainer = document.getElementById('messages');
+            messagesContainer.innerHTML = '';
+            data.forEach(message => {
+                const formattedName = message.name
+                    .toLowerCase()
+                    .split(' ')
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(' ');
+
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message-item');
+                messageElement.innerHTML = `
+                    <div class="head-message">
+                        <h4>${formattedName}</h4>
+                        <p class="attendance-status">${message.attendance}</p>
+                    </div>
+                    <p class="message-content">${message.message}</p>
+                `;
+                messagesContainer.appendChild(messageElement);
+            });
+        });
+}
+
 
   // Fungsi untuk menampilkan jumlah kehadiran
   function fetchAttendanceCounts() {
