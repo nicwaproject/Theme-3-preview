@@ -5,6 +5,7 @@
     --overlay-1: rgba(192, 197, 210, 0.4);
     --primary-font: "Sacramento", cursive;
     --secondary-font: "Raleway", sans-serif;
+    --third-font: "EB Garamond", serif;
     --quran-font: "Katibeh", serif;
     --cover-image-desktop: url('gallery14.jpeg');
   }
@@ -353,7 +354,7 @@ nav ul li a:hover {
 }
 
 .parent {
-    font-size: 0.6em;
+    font-size: 0.7em;
 }
 
 #lottie-container {
@@ -475,17 +476,18 @@ nav ul li a:hover {
 
 .konten5 h3 {
     color: #C0C5D2;
-    font-size: 1.6em;
+    font-size: 1.7em;
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
 }
 
 .konten5 h4 {
+    font-family: var(--third-font);
     text-decoration: underline;
-    font-size: 1.3em;
+    font-size: 1.5em;
 }
 
 .konten5 p {
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
         
 .judul {
@@ -521,13 +523,18 @@ h2, h3, h4, p {
 }
 
 .location-button {
-    font-size: 0.8em;
+    font-size: 0.9em;
     margin-top: 50px;
-    padding: 5px 16px;
+    padding: 8px 16px;
     background-color: #202127;
     color: white;
     text-decoration: none;
     border-radius: 10px;
+}
+
+.location-button:hover {
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
 }
 
 .lokasi {
@@ -678,7 +685,7 @@ h2, h3, h4, p {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 0.6em; /* Atau gunakan 16px jika lebih konsisten */
+    font-size: 0.7em; /* Atau gunakan 16px jika lebih konsisten */
     border-radius: 5px;
     border: 1px solid #ccc;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -696,10 +703,10 @@ button {
     font-weight: 400;
     font-style: normal;
     padding: 10px 20px;
-    font-size: 0.6em;
+    font-size: 0.8em;
     color: white;
     background-color: var(--primary-color);
-    border: none;
+    border: 1px solid white;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -736,9 +743,16 @@ button:hover {
     overflow-y: auto; /* Tambahkan scroll vertikal */
 }
 
+.message-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+}
+
 .message-box h3, .attendance-box h3 {
     margin-bottom: 20px;
-    font-size: 1.8em;
+    font-size: 2em;
     text-align: center;
     color: white;
     font-family: var(--primary-font);
@@ -758,27 +772,32 @@ button:hover {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
+.head-message {
+    display: flex;
+    justify-content: space-between;
+}
+
 .attendance-status {
     width: 80px;
     text-align: left;
-    font-size: 0.9em;
-    color: white;
-    font-style: italic;
-    border-top: 1px solid white;
-    color: white;
+    font-size: 0.8em;
+    color: var(--secondary-color);
 }
 
 .message-item h4 {
+    font-family: var(--third-font);
+    font-weight: 300;
     margin: 0 0 5px 0;
-    font-size: 1em;
+    font-size: 1.6em;
     text-decoration: wavy;
     text-align: left;
 }
 
-.message-item p {
+.message-content {
     margin: 0;
-    font-size: 0.7em;
+    font-size: 0.8em;
     text-align: left;
+    color: var(--secondary-color);
 }
 
 .attendance-grid {
