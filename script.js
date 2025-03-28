@@ -86,15 +86,6 @@ window.addEventListener('resize', function() {
     backgrounds = getBackgrounds(); // Update array background saat ukuran layar berubah
 });
 
-var animation = lottie.loadAnimation({
-    container: document.getElementById("lottie-container"),
-    renderer: "svg",
-    loop: true,
-    autoplay: true,
-    path: "rectangle.json" // Pastikan file ini ada di direktori yang benar
-});
-
-  // Countdown timer
 // Countdown timer
 const targetDate = new Date('2024-09-15T00:00:00');
 
@@ -203,8 +194,11 @@ updateCountdown(); // Initialize countdown
                 const messageElement = document.createElement('div');
                 messageElement.classList.add('message-item');
                 messageElement.innerHTML = `
-                    <div class="head-message">
-                        <h4>${formattedName}</h4>
+                    <div class="message-header">
+                        <div class="message-info">
+                            <i class="fas fa-user-circle profile-icon"></i>
+                            <h4>${formattedName}</h4>
+                        </div>
                         <p class="attendance-status">${message.attendance}</p>
                     </div>
                     <p class="message-content">${message.message}</p>
